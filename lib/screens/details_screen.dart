@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mvviesapp/widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
@@ -16,6 +17,8 @@ class DetailsScreen extends StatelessWidget {
             delegate: SliverChildListDelegate([
               _PosterAndTitle(),
               _Overview(),
+              _Overview(),
+              CastingCards(),
             ]),
           ),
         ],
@@ -66,14 +69,14 @@ class _PosterAndTitle extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: FadeInImage(
+            child: const FadeInImage(
               placeholder: AssetImage('assets/no-image.jpg'),
               image: NetworkImage('https://via.placeholder.com/200x300'),
               height: 150,
             ),
           ),
           const SizedBox(
-            width: 20,
+            width: 15,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +89,7 @@ class _PosterAndTitle extends StatelessWidget {
               ),
               Text(
                 'movie.originalTitle',
-                style: textTheme.headline5,
+                style: textTheme.subtitle1,
                 overflow: TextOverflow.ellipsis,
               ),
               Row(
@@ -118,9 +121,14 @@ class _Overview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
     return Container(
-      child:
-          Text('Amet id ut aliqua minim nisi ullamco commodo ipsum eiusmod.'),
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      child: Text(
+        'Amet id ut aliqua minim nisi ullamco commodo ipsum eiusmod. Cupidatat deserunt ullamco pariatur reprehenderit. In elit laboris cillum minim cillum sit adipisicing anim. Laboris adipisicing voluptate amet cupidatat tempor voluptate amet dolor mollit. Incididunt ex sit officia Lorem est sunt. Velit dolore veniam adipisicing nostrud ipsum mollit magna consequat ullamco consequat veniam.',
+        style: textTheme.subtitle2,
+        textAlign: TextAlign.justify,
+      ),
     );
   }
 }
